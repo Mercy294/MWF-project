@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User's Page</title>
+    <link rel="stylesheet" href="bootstrap-css/css/bootstrap.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f3f4f6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        input[type="search"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #007b5e;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007b5e;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .action-btn {
+            padding: 5px 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            margin-right: 5px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav>
+        <img src="mwf-logo-mwf-letter-mwf-letter-logo-design-initials-mwf-logo-linked-with-circle-uppercase-monogram-logo-mwf-typography-technology-business-real-estate-brand_229120-66427.avif" alt="MWF-logo" width="90px" height="90px" style="border-radius: 50%; margin: 0px;">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Products</a>
+        <a href="users.html">Users</a>
+        <a href="sales.html">Sales</a>
+        <a href="suppliers.html">Suppliers</a>
+        <a href="index.html" class="btn btn-primary" onclick="logoutUser()"><img
+                src="logout-icon-template-black-color-editable-log-out-icon-symbol-flat-illustration-for-graphic-and-web-design-free-vector.jpg"
+                alt="Logout" width="30px" height="30px" style="border-radius: 50%; margin: 0px;"></a>
+    </nav>
+    <div>
+
+        <div class="search-bar">
+            <input type="search" id="searchInput" placeholder="Search by name, location or type...">
+        </div>
+
+        <br><b>
+            <h1>Users Management</h1>
+        </b>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>LastLogin</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>Aldo K.</td>
+                <td>aldo@company.com</td>
+                <td>(256) 70 456-7890</td>
+                <td>Administrator</td>
+                <td>Active</td>
+                <td>2025-07-25 08:00</td>
+                <td>
+                    <button class="action-btn" onclick="editUser(1)">Edit</button>
+                    <button class="action-btn delete-btn" onclick="deleteUser(1)">Delete</button>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>LastLogin</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>Alice K.</td>
+                <td>alice@company.com</td>
+                <td>(256) 70 456-7891</td>
+                <td>Secretary</td>
+                <td>Active</td>
+                <td>2025-07-25 07:10</td>
+                <td>
+                    <button class="action-btn" onclick="editUser(2)">Edit</button>
+                    <button class="action-btn delete-btn" onclick="deleteUser(2)">Delete</button>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>LastLogin</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>Ben A.</td>
+                <td>ben@company.com</td>
+                <td>(256) 77 756-7892</td>
+                <td>Administrator</td>
+                <td>Active</td>
+                <td>2025-07-25 07:25</td>
+                <td>
+                    <button class="action-btn" onclick="editUser(3)">Edit</button>
+                    <button class="action-btn delete-btn" onclick="deleteUser(3)">Delete</button>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>LastLogin</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>Brian M.</td>
+                <td>brian@company.com</td>
+                <td>(256) 77 756-7893</td>
+                <td>Store Manager</td>
+                <td>Active</td>
+                <td>2025-07-25 07:30</td>
+                <td>
+                    <button class="action-btn" onclick="editUser(4)">Edit</button>
+                    <button class="action-btn delete-btn" onclick="deleteUser(4)">Delete</button>
+                </td>
+
+            </tr>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>LastLogin</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>Andrew V.</td>
+                    <td>andrew@company.com</td>
+                    <td>(256) 77 756-7895</td>
+                    <td>Furniture Designer</td>
+                    <td>Active</td>
+                    <td>2025-07-25 07:40</td>
+                    <td>
+                        <button class="action-btn" onclick="editUser(5)">Edit</button>
+                        <button class="action-btn delete-btn" onclick="deleteUser(5)">Delete</button>
+                    </td>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>LastLogin</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>Daniel K.</td>
+                    <td>daniel@company.com</td>
+                    <td>(256) 70 456-7891</td>
+                    <td>Inventory Specialist</td>
+                    <td>Active</td>
+                    <td>2025-07-25 07:10</td>
+                    <td>
+                        <button class="action-btn" onclick="editUser(6)">Edit</button>
+                        <button class="action-btn delete-btn" onclick="deleteUser(6)">Delete</button>
+
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                    <th>LastLogin</th>
+                </tr>
+
+                <tr>
+                    <td>Sarah T.</td>
+                    <td>sarah@company.com</td>
+                    <td>(256) 77 756-7894</td>
+                    <td>Sales Consultant</td>
+                    <td>Inactive</td>
+                    <td>2025-07-25 07:35</td>
+                    <td>
+                        <button class="action-btn" onclick="editUser(7)">Edit</button>
+                        <button class="action-btn delete-btn" onclick="deleteUser(7)">Delete</button>
+                    </td>
+                </tr>
+            </table>
+    </div>
+    <div class="form-container">
+        <h2>Add New User</h2>
+        <form id="addUserForm">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <select required>
+                <option value="">Select Role</option>
+                <option value="Administrator">Administrator</option>
+                <option value="Store Manager">Store Manager</option>
+                <option value="Attendant">Attendant</option>
+            </select>
+            <select required>
+                <option value="">Select Status</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+            <button type="submit">Add User</button>
+        </form>
+    </div>
+
+    <script src="bootstrap-css/js/bootstrap.bundle.js"></script>
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suppliers Page</title>
+    <link rel="stylesheet" href="bootstrap-css/css/bootstrap.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+
+        }
+
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007b5e;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .status {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .active {
+            background-color: #28a745;
+        }
+
+        .inactive {
+            background-color: #dc3545;
+        }
+
+        .actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        .actions .edit {
+            color: #007bff;
+        }
+
+        .actions .delete {
+            color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <img src="mwf-logo-mwf-letter-mwf-letter-logo-design-initials-mwf-logo-linked-with-circle-uppercase-monogram-logo-mwf-typography-technology-business-real-estate-brand_229120-66427.avif" alt="MWF-logo" width="90px" height="90px" style="border-radius: 50%; margin: 0px;">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Products</a>
+        <a href="users.html">Users</a>
+        <a href="sales.html">Sales</a>
+        <a href="suppliers.html">Suppliers</a>
+        <a href="index.html" class="btn btn-primary" onclick="logoutUser()"><img
+                src="logout-icon-template-black-color-editable-log-out-icon-symbol-flat-illustration-for-graphic-and-web-design-free-vector.jpg"
+                alt="Logout" width="30px" height="30px" style="border-radius: 50%; margin: 0px;"></a>
+
+    </nav>
+
+
+    <div>
+
+        <div class="search-bar">
+            <input type="search" id="searchInput" placeholder="Search by name, location or type...">
+        </div>
+        <br><b>
+            <h2><strong>Furniture Suppliers</strong></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Supplier Name</th>
+                        <th>Contact Person</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Products Supplied</th>
+                        <th>Last Delivery</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="supplierBody">
+                    <!-- Supplier rows go here -->
+                    <tr>
+                        <td>Modern Interiors Ltd</td>
+                        <td>Paul Nsubuga</td>
+                        <td>0701234567</td>
+                        <td>paul@moderninteriors.com</td>
+                        <td>Dining Tables, Sofas</td>
+                        <td>2025-07-15</td>
+                        <td><span class="status active">Active</span></td>
+                        <td class="actions">
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Elegant Woods</td>
+                        <td>Sarah Atim</td>
+                        <td>0709876543</td>
+                        <td>sarah@elegantwoods.com</td>
+                        <td>Hardwood, Chairs</td>
+                        <td>2025-07-10</td>
+                        <td><span class="status inactive">Inactive</span></td>
+                        <td class="actions">
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>FurniBuild Uganda</td>
+                        <td>Musa Kato</td>
+                        <td>0703456789</td>
+                        <td>musa@furnibuild.co.ug</td>
+                        <td>Coffee Tables, Cabinets</td>
+                        <td>2025-07-24</td>
+                        <td><span class="status active">Active</span></td>
+                        <td class="actions">
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Upholstery Hub</td>
+                        <td>Grace Nakato</td>
+                        <td>0707654321</td>
+                        <td>grace@upholsteryhub.com</td>
+                        <td>Cushions, Fabric, Sofas</td>
+                        <td>2025-07-22</td>
+                        <td><span class="status active">Active</span></td>
+                        <td class="actions">
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Oak & Frame</td>
+                        <td>Kevin Owor</td>
+                        <td>0701122334</td>
+                        <td>kevin@oaknframe.com</td>
+                        <td>Bed Frames, Desks</td>
+                        <td>2025-07-20</td>
+                        <td><span class="status active">Active</span></td>
+                        <td class="actions">
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <script>
+                function logoutUser() {
+                    // Clear session or local storage
+                    sessionStorage.clear();
+                    localStorage.clear();
+
+                    // Redirect to login page
+                    window.location.href = "login.html"; // change to your actual login page
+                }
+            </script>
+
+
+
+
+            <script src="bootstrap-css/js/bootstrap.bundle.js"></script>
+            <script src="script.js"></script>
+</body>
+
+</html>

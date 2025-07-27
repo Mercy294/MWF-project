@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Page</title>
+    <link rel="stylesheet" href="bootstrap-css/css/bootstrap.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        th,
+        td {
+           
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #007b5e;
+            color: white;
+        }
+
+        .expand-btn {
+            background: #007bff;
+            color: #fff;
+            padding: 0.3rem 0.7rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .sales-row {
+            background: aliceblue
+            
+        }
+
+        .status {
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .active {
+            background: #28a745;
+        }
+
+        .inactive {
+            background: #dc3545;
+        }
+
+        .actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-right: 8px;
+        }
+
+        .edit {
+            color: #007bff;
+        }
+
+        .delete {
+            color: #dc3545;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: aliceblue
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin: 0.8rem 0 0.3rem;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            margin-top: 1.5rem;
+            width: 100%;
+            padding: 0.8rem;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .success {
+            margin-top: 1rem;
+            color: green;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <img src="mwf-logo-mwf-letter-mwf-letter-logo-design-initials-mwf-logo-linked-with-circle-uppercase-monogram-logo-mwf-typography-technology-business-real-estate-brand_229120-66427.avif" alt="MWF-logo" width="90px" height="90px" style="border-radius: 50%; margin: 0px;">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Products</a>
+        <a href="users.html">Users</a>
+        <a href="sales.html">Sales</a>
+        <a href="suppliers.html">Suppliers</a>
+        <a href="index.html" class="btn btn-primary" onclick="logoutUser()"><img
+                src="logout-icon-template-black-color-editable-log-out-icon-symbol-flat-illustration-for-graphic-and-web-design-free-vector.jpg"
+                alt="Logout" width="30px" height="30px" style="border-radius: 50%; margin: 0px;"></a>
+    </nav>
+    <div>
+        <div class="search-bar">
+            <input type="search" id="searchInput" placeholder="Search by name, location or type...">
+        </div>
+        <br><b>
+    </div>
+    <h1>Customers & Sales</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Phone</th>
+                <th style="text-align: center;">Email</th>
+                <th style="text-align: left;">Total Spent</th>
+                <th>Status</th>
+                <th style="text-align: center;">Actions</th>
+                <th style="text-align: center;">Sales</th>
+         
+            </tr>
+        </thead>
+        <tbody id="customerBody">
+
+        </tbody>
+    </table>
+
+    <script>
+        const customers = [
+            {
+                id: 1,
+                name: "Alice Kimani",
+                phone: "0700123456",
+                email: "alice@example.com",
+                location: "Kampala",
+                type: "Regular",
+                status: "Active",
+                favorite: "Sofas",
+                sales: [
+                    { product: "Leather Sofa", total: "300,000", date: "2024-07-01" },
+                    { product: "Coffee Table", total: "100,000", date: "2024-07-05" }
+                ],
+            },
+            {
+                id: 2,
+                name: "Amina Nansubuga",
+                phone: "0700567896",
+                email: "amina.n@example.com",
+                location: "Fort Portal",
+                type: "VIP",
+                status: "Active",
+                favorite: "Beds",
+                sales: [
+                    { product: "King Size Bed", total: "800,000", date: "2024-07-10" },
+                    { product: "Wardrobe", total: "400,000", date: "2024-07-15" }
+                ],
+            },
+            {
+                id: 3,
+                name: "Daniel Ochieng",
+                phone: "0700333444",
+                email: "daniel.o@example.com",
+                location: "Entebbe",
+                type: "Regular",
+                status: "Inactive",
+                favorite: "Tables",
+                sales: [
+                    { product: "Oak Dining Table", total: "250,000", date: "2024-07-20" },
+                    { product: "Office Chair", total: "150,000", date: "2024-07-25" }
+                ],
+            },
+            {
+                id: 4,
+                name: "Brian Otim",
+                phone: "0700444555",
+                email: "brian.o@example.com",
+                location: "Kampala",
+                type: "Regular",
+                status: "Inactive",
+                favorite: "Sofas",
+                sales: [
+                    { product: "Leather Sofa", total: "300,000", date: "2024-07-30" },
+                    { product: "Coffee Table", total: "100,000", date: "2024-08-05" }
+                ],
+            },
+            {
+                id: 5,
+                name: "Brian Otim",
+                phone: "0777123456",
+                email: "brian@otim.com",
+                location: "Gulu",
+                type: "Regular",
+                status: "Inactive",
+                favorite: "Dining Tables",
+                sales: [
+                    { product: "Dining Table", total: "160,000", date: "2024-06-15" }
+                ]
+            },
+            {
+                id: 6,
+                name: "Margaret Nabukenya",
+                phone: "0785123456",
+                email: "margaret.n@example.com",
+                location: "Jinja",
+                type: "Regular",
+                status: "Active",
+                favorite: "Chairs",
+                sales: [
+                    { product: "Office Chair", total: "150,000", date: "2024-08-01" },
+                    { product: "Side Table", total: "80,000", date: "2024-08-05" }
+                ],
+
+            },
+            {
+                id: 7,
+                name: "Daniel Kato",
+                phone: "0776456789",
+                email: "daniel.k@example.com",
+                location: "Mbarara",
+                type: "Regular",
+                status: "Active",
+                favorite: "Tables",
+                sales: [
+                    { product: "Glass Dining Table", total: "250,000", date: "2024-08-10" },
+                    { product: "Stool Set", total: "120,000", date: "2024-08-15" }
+                ],
+
+            },
+            {
+                id: 8,
+                name: "Grace Atieno",
+                phone: "0757789012",
+                email: "grace.a@example.com",
+                location: "Gulu",
+                type: "VIP",
+                status: "Inactive",
+                favorite: "Beds",
+                sales: [
+                    { product: "Queen Size Bed", total: "700,000", date: "2024-08-20" },
+                    { product: "Dressing Table", total: "200,000", date: "2024-08-25" }
+                ],
+            },
+            {
+                id: 9,
+                name: "Sarah Kintu",
+                phone: "0789111222",
+                email: "sarah.k@example.com",
+                location: "Kampala",
+                type: "VIP",
+                status: "Active",
+                favorite: "Sofas",
+                sales: [
+                    { product: "Luxury Sofa Set", total: "1,200,000", date: "2024-09-01" },
+                    { product: "Coffee Table Set", total: "300,000", date: "2024-09-05" }
+                ],
+            },
+        ];
+
+        function renderCustomers() {
+            const tbody = document.getElementById("customerBody");
+            tbody.innerHTML = "";
+
+            customers.forEach(c => {
+                const totalSpent = c.sales.reduce((sum, s) => sum + parseFloat(s.total.replace('$', '')), 0);
+                const row = `
+              <tr>
+                <td>${c.name}</td>
+                <td>${c.phone}</td>
+                <td>${c.email}</td>
+                <td>$${totalSpent}</td>
+                <td><span class="status ${c.status.toLowerCase()}">${c.status}</span></td>
+                <td class="actions">
+                  <button class="edit" onclick="editCustomer(${c.id})"><i class="fas fa-edit">Edit</i></button>
+                  <button class="delete" onclick="deleteCustomer(${c.id})"><i class="fas fa-trash">Delete</i></button>
+                </td>
+                <td><button class="expand-btn" onclick="toggleSales(${c.id})">View Sales</button></td>
+              </tr>
+              <tr id="sales-${c.id}" class="sales-row" style="display: none;">
+                <td colspan="7">
+                  <strong>Sales History:</strong>
+                  <ul>
+                    ${c.sales.map(s => `<li>${s.date} - ${s.product} - <strong>${s.total}</strong></li>`).join('')}
+                  </ul>
+                </td>
+              </tr>
+            `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        function toggleSales(id) {
+            const row = document.getElementById(`sales-${id}`);
+            row.style.display = row.style.display === "table-row" ? "none" : "table-row";
+        }
+
+        function editCustomer(id) {
+            alert(`Edit customer #${id} — coming soon.`);
+        }
+
+        function deleteCustomer(id) {
+            if (confirm("Delete this customer?")) {
+                const index = customers.findIndex(c => c.id === id);
+                if (index !== -1) {
+                    customers.splice(index, 1);
+                    renderCustomers();
+                }
+            }
+        }
+
+        renderCustomers();
+    </script><br><br>
+    <div class="container">
+        <h2>Add New Customer</h2>
+        <form id="customerForm">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required>
+
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+
+            <label for="status">Status</label>
+            <select id="status">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+
+            <hr style="margin: 1.5rem 0;">
+
+            <label for="product">First Purchase (Product Name)</label>
+            <input type="text" id="product" placeholder="e.g. Leather Sofa" required>
+
+            <label for="amount">Amount (UGX)</label>
+            <input type="number" id="amount" placeholder="e.g. 800000" required>
+
+            <label for="date">Date of Purchase</label>
+            <input type="date" id="date" required>
+
+            <button type="submit">Add Customer</button>
+
+            <div class="success" id="message"></div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById("customerForm");
+        const message = document.getElementById("message");
+
+        const customers = [];
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const newCustomer = {
+                name: document.getElementById("name").value,
+                phone: document.getElementById("phone").value,
+                email: document.getElementById("email").value,
+                status: document.getElementById("status").value,
+                firstPurchase: {
+                    product: document.getElementById("product").value,
+                    amount: document.getElementById("amount").value,
+                    date: document.getElementById("date").value,
+                }
+            };
+
+            customers.push(newCustomer);
+
+            message.textContent = "Customer added successfully!";
+            form.reset();
+
+            console.log("All customers:", customers); 
+        });
+    </script>
+    <script src="bootstrap-css/js/bootstrap.bundle.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
